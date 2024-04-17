@@ -19,16 +19,14 @@ sensor = adafruit_bno055.BNO055_I2C(i2c)
 while True:
 
     yaw, roll, pitch = sensor.euler
+    #print(yaw, roll, pitch)
     #print("Temperature: {} degrees C".format(sensor.temperature))
     #print("Accelerometer (m/s^2): {}".format(sensor.acceleration))
     #print("Magnetometer (microteslas): {}".format(sensor.magnetic))
     #print("Gyroscope (rad/sec): {}".format(sensor.gyro))
-    print("Euler angle: roll {}, pitch, {}, yaw {}".format(roll, pitch, yaw))
+    print(f'Euler angles:- roll:{roll:.4f}, pitch, {pitch:.4f}, yaw {yaw:.4f}')
     #print("Quaternion: {}".format(sensor.quaternion))
     #print("Linear acceleration (m/s^2): {}".format(sensor.linear_acceleration))
     #print("Gravity (m/s^2): {}".format(sensor.gravity))
 
-
-    print()
-
-    #time.sleep(0.1)
+    time.sleep(0.05)

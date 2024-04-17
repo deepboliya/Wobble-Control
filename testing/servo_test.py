@@ -27,22 +27,22 @@ pi =  pigpio.pi()                    # object to access class pigpio
 pi.set_mode(22, pigpio.OUTPUT)
 pi.set_mode(23, pigpio.OUTPUT)
 
-pi.set_servo_pulsewidth(22, 1500)  # set_servo_pulsewidth(pin_no, pulse_width in ms)
-pi.set_servo_pulsewidth(23, 1500)
-time.sleep(2)
-'''
-    pi.set_servo_pulsewidth(22, 1700) # set_servo_pulsewidth(pin_no, pulse_width in ms)
-    pi.set_servo_pulsewidth(23, 1300)
-    time.sleep(2)
+#pi.set_servo_pulsewidth(22, 800)  # set_servo_pulsewidth(pin_no, pulse_width in ms)
+#pi.set_servo_pulsewidth(23, 800)
+#time.sleep(2)
+for i in range(3):
+    pi.set_servo_pulsewidth(22, 1900) # set_servo_pulsewidth(pin_no, pulse_width in ms)
+    pi.set_servo_pulsewidth(23, 1900)
+    time.sleep(1)
 
-    pi.set_servo_pulsewidth(22, 1300) # set_servo_pulsewidth(pin_no, pulse_width in ms)
-    pi.set_servo_pulsewidth(23, 1700)
-    time.sleep(2)
+    pi.set_servo_pulsewidth(22, 1100) # set_servo_pulsewidth(pin_no, pulse_width in ms)
+    pi.set_servo_pulsewidth(23, 1100)
+    time.sleep(1)
 
 
-    pi.set_servo_pulsewidth(22,1600) # 900set_servo_pulsewidth(pin_no, pulse_width in ms)
-    pi.set_servo_pulsewidth(23, 1400) #1100rear
-    time.sleep(2)
-'''
+    pi.set_servo_pulsewidth(22, 1500) # 900set_servo_pulsewidth(pin_no, pulse_width in ms)
+    pi.set_servo_pulsewidth(23, 1500) #1100rear
+    time.sleep(1)
+
 
 pi.stop()
