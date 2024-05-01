@@ -30,7 +30,7 @@ pi.set_mode(18,pigpio.OUTPUT)  #AIN1 18        12
 pi.set_mode(27,pigpio.OUTPUT)  #STBY 27        13
 
 #pi.write(27,0) #
-
+sleep_time = 15
 counter = 0
 while(counter<=1):
     print(counter)
@@ -43,7 +43,7 @@ while(counter<=1):
     pi.write(17,0)
     pi.set_PWM_dutycycle(13,125)
     #pi.hardware_PWM(13, 800, 400000) # 800Hz 75% dutycycle
-    time.sleep(2)
+    time.sleep(sleep_time)
 
 
 
@@ -54,7 +54,7 @@ while(counter<=1):
     pi.write(17,1)
     pi.set_PWM_dutycycle(13, 50)
     #pi.hardware_PWM(13, 800, 400000) # 800Hz 75% dutycycle
-    time.sleep(2)
+    time.sleep(sleep_time)
     
     
 

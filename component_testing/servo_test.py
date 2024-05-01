@@ -16,19 +16,20 @@ pi =  pigpio.pi()                    # object to access class pigpio
 #pi.set_servo_pulsewidth(23, 800)
 #time.sleep(2)
 #Servo at pin 23 not working
+wait_time = 2
 for i in range(3):
+    print(i)
     pi.set_servo_pulsewidth(22, 1900) # set_servo_pulsewidth(pin_no, pulse_width in ms)
     pi.set_servo_pulsewidth(23, 1900)
-    time.sleep(1)
+    time.sleep(wait_time)
 
     pi.set_servo_pulsewidth(22, 1100) # set_servo_pulsewidth(pin_no, pulse_width in ms)
     pi.set_servo_pulsewidth(23, 1100)
-    time.sleep(1)
-
+    time.sleep(wait_time)
 
     pi.set_servo_pulsewidth(22, 1500) # 900set_servo_pulsewidth(pin_no, pulse_width in ms)
     pi.set_servo_pulsewidth(23, 1500) #1100rear
-    time.sleep(1)
+    time.sleep(wait_time)
 
 
 pi.stop()
