@@ -30,7 +30,7 @@ pi.set_mode(18,pigpio.OUTPUT)  #AIN1 18        12
 pi.set_mode(27,pigpio.OUTPUT)  #STBY 27        13
 
 #pi.write(27,0) #
-sleep_time = 15
+sleep_time = 3
 counter = 0
 while(counter<=1):
     print(counter)
