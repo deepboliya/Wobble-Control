@@ -19,12 +19,12 @@ pi =  pigpio.pi()                    # object to access class pigpio
 wait_time = 2
 for i in range(3):
     print(i)
-    pi.set_servo_pulsewidth(22, 1900) # set_servo_pulsewidth(pin_no, pulse_width in ms)
-    pi.set_servo_pulsewidth(23, 1900)
+    pi.set_servo_pulsewidth(22, 1800) # set_servo_pulsewidth(pin_no, pulse_width in ms)
+    pi.set_servo_pulsewidth(23, 1800)
     time.sleep(wait_time)
 
-    pi.set_servo_pulsewidth(22, 1100) # set_servo_pulsewidth(pin_no, pulse_width in ms)
-    pi.set_servo_pulsewidth(23, 1100)
+    pi.set_servo_pulsewidth(22, 1200) # set_servo_pulsewidth(pin_no, pulse_width in ms)
+    pi.set_servo_pulsewidth(23, 1200)
     time.sleep(wait_time)
 
     pi.set_servo_pulsewidth(22, 1500) # 900set_servo_pulsewidth(pin_no, pulse_width in ms)
