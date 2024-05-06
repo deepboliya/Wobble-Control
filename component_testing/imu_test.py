@@ -21,12 +21,19 @@ while True:
     yaw, roll, pitch = sensor.euler
     #print(yaw, roll, pitch)
     #print("Temperature: {} degrees C".format(sensor.temperature))
-    #print("Accelerometer (m/s^2): {}".format(sensor.acceleration))
+    # Assuming sensor.acceleration returns a tuple (x, y, z)
+    #print("Accelerometer (m/s^2): x={:.4f}, y={:.4f}, z={:.4f}".format(*sensor.acceleration))
+
+    #print(f"Accelerometer (m/s^2): {sensor.acceleration:.4f}")
     #print("Magnetometer (microteslas): {}".format(sensor.magnetic))
-    #print("Gyroscope (rad/sec): {}".format(sensor.gyro))
+    #print(f"Gyroscope (rad/sec): {sensor.gyro}")
+    print("Gyro (m/s^2): q={:.4f}, p={:.4f}, r={:.4f}".format(*sensor.gyro))
     print(f'Euler angles:- roll:{roll:.4f}, pitch, {pitch:.4f}, yaw {yaw:.4f}')
     #print("Quaternion: {}".format(sensor.quaternion))
-    #print("Linear acceleration (m/s^2): {}".format(sensor.linear_acceleration))
+    # Assuming sensor.acceleration returns a tuple (x, y, z)
+    #print("Linear accn (m/s^2): x={:.4f}, y={:.4f}, z={:.4f}".format(*sensor.linear_acceleration))
+
+    #print(f"Linear acceleration (m/s^2): {sensor.linear_acceleration:.4f}")
     #print("Gravity (m/s^2): {}".format(sensor.gravity))
 
     time.sleep(0.05)
