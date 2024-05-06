@@ -77,16 +77,15 @@ if __name__ == "__main__":
         #spbot_.forward(120)
         yaw, roll, pitch = spbot_.get_orientation()
         q, p, r = spbot_.get_body_rates()
-        try:
-             value = - 1 * roll / 20
-        except:
-             continue
+
+        value = - 1 * roll / 20
+
         value = max(min(1, value), -1) # Constrain between -1 and +1
-        spbot_.set_servo_angle(value)
+        #spbot_.set_servo_angle(value)
         data_time_stamped.append([current_time, yaw, pitch, roll, p, q, r])
 
     print(data_time_stamped)
-    filename = 'bot_ypr_pqr_data_actuated_pendulum'
+    filename = 'bot_ypr_pqr_data_collect'
     extension = '.txt'
     index = 1
 
