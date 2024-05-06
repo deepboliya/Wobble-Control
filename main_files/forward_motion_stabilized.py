@@ -24,16 +24,16 @@ class spbot():
 
     def __init__(self):
         return
-    
+
     def get_body_rates(self):
         return self.imu_bno055.gyro
-    
+
     def get_orientation(self):
-        return self.imu_bno055.euler    
-    
+        return self.imu_bno055.euler
+
     def get_linear_acceleration(self):
         return self.imu_bno055.acceleration
-    
+
     def forward(self,duty):
         pi.write(27,1)
         pi.write(18,1)
@@ -46,6 +46,15 @@ class spbot():
         pi.write(18,0)
         pi.write(17,1)
         pi.set_PWM_dutycycle(13,duty)
+        return
+
+    def set_servo_angle(self, value):
+        # Value belongs to [-1, 1]. -1 is leftmost point the pendulum can reach, +1 is rightmost
+        # The pulse value can vary from 1200 to 1800 with 1500 as middle.
+        max_deviation = 300
+        print(f"Angle value:{value}")
+        pi.set_servo_pulsewidth(22, 1500 + value*max_deviation)
+        pi.set_servo_pulsewidth(23, 1500 + value*max_deviation) 
         return
     
     def gpio_cleanup(self):
@@ -68,10 +77,16 @@ if __name__ == "__main__":
         spbot_.forward(120)
         yaw, roll, pitch = spbot_.get_orientation()
         q, p, r = spbot_.get_body_rates()
+        try:
+             value = - 1 * roll / 20
+        except:
+             continue
+        value = max(min(1, value), -1) # Constrain between -1 and +1
+        spbot_.set_servo_angle(value)
         data_time_stamped.append([current_time, yaw, pitch, roll, p, q, r])
 
     print(data_time_stamped)
-    filename = 'bot_ypr_pqr_forward_no_stability'
+    filename = 'bot_ypr_pqr_data_forward_stabilized'
     extension = '.txt'
     index = 1
 
@@ -83,3 +98,4 @@ if __name__ == "__main__":
     np.savetxt(f"{filename}{index}{extension}", data_time_stamped, fmt='%.2f', header='Timestamp Yaw Pitch Roll p q r', comments='')
 
     spbot_.gpio_cleanup()
+
